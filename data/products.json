@@ -1,0 +1,8 @@
+[
+  {"name":"Smart LED Bulb","category":"Home Automation","price":599},
+  {"name":"Smart Plug","category":"Home Automation","price":899},
+  {"name":"Wireless Headphones","category":"Electronics","price":1499},
+  {"name":"Bluetooth Speaker","category":"Electronics","price":1199},
+  {"name":"Cotton Bedsheet","category":"Home Textile","price":1299},
+  {"name":"Bath Towel Set","category":"Home Textile","price":799}
+]
