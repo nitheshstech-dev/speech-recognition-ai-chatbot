@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Commerce Prototype</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:1000px;margin:40px auto;padding:0 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
+    .card{border:1px solid #ddd;border-radius:14px;padding:20px}
+    #status{margin-top:20px;padding:16px;border-radius:10px;background:#f5f5f5}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Voice Commerce Prototype</h1>
+      <p>Demo interface for a speech-driven shopping assistant.</p>
+    </div>
+  </header>
+
+  <div id="status">Try: "show products" or "search headphones".</div>
+  <section class="grid" id="products"></section>
+
+  <script>
+    const products = [
+      {name:"Smart LED Bulb",category:"Home Automation",price:599},
+      {name:"Smart Plug",category:"Home Automation",price:899},
+      {name:"Wireless Headphones",category:"Electronics",price:1499},
+      {name:"Bluetooth Speaker",category:"Electronics",price:1199},
+      {name:"Cotton Bedsheet",category:"Home Textile",price:1299},
+      {name:"Bath Towel Set",category:"Home Textile",price:799}
+    ];
+
+    const grid = document.getElementById("products");
+    const status = document.getElementById("status");
+
+    function render(items){
+      grid.innerHTML = items.map(p => `<article class="card"><h2>${p.name}</h2><p>${p.category}</p><strong>₹${p.price}</strong></article>`).join("");
+    }
+
+    render(products);
+
+    if ("webkitSpeechRecognition" in window) {
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-IN";
+      recognition.continuous = false;
+
+      status.onclick = () => recognition.start();
+      recognition.onstart = () => status.textContent = "Listening...";
+      recognition.onresult = (event) => {
+        const command = event.results[0][0].transcript.toLowerCase();
+        status.textContent = "Command: " + command;
+        const query = command.replace("search", "").replace("show", "").trim();
+        const filtered = products.filter(p => `${p.name} ${p.category}`.toLowerCase().includes(query));
+        render(filtered.length ? filtered : products);
+      };
+    }
+  </script>
+</body>
+</html>
