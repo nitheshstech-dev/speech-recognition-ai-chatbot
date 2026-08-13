@@ -1,0 +1,15 @@
+{
+  "intents": [
+    {"tag":"greeting","patterns":["hello","hi","hey","good morning","good evening","are you there"],"responses":["Hello! How can I help you?","Hi! What can I do for you?"]},
+    {"tag":"goodbye","patterns":["bye","goodbye","exit","quit","stop"],"responses":["Goodbye!","See you later."]},
+    {"tag":"thanks","patterns":["thank you","thanks","thank you assistant","thanks a lot"],"responses":["You're welcome.","Happy to help."]},
+    {"tag":"time","patterns":["what time is it","tell me the time","current time","time now"],"responses":[]},
+    {"tag":"date","patterns":["what is today's date","tell me the date","today's date","what date is it"],"responses":[]},
+    {"tag":"youtube","patterns":["open youtube","launch youtube","go to youtube","open video site"],"responses":["Opening YouTube."]},
+    {"tag":"google","patterns":["open google","launch google","search the web","open browser"],"responses":["Opening Google."]},
+    {"tag":"wikipedia","patterns":["search wikipedia","open wikipedia","wikipedia"],"responses":["Opening Wikipedia."]},
+    {"tag":"home_automation","patterns":["turn on the light","turn off the light","switch on light","switch off light","turn on fan","turn off fan","home automation","control my home"],"responses":[]},
+    {"tag":"ecommerce","patterns":["show products","find products","search products","open shopping","show me products","ecommerce"],"responses":[]},
+    {"tag":"help","patterns":["what can you do","help","commands","what are your features"],"responses":["I can respond to voice commands, open websites, tell the time and date, control a simulated home-automation interface, and search a demo product catalog."]}
+  ]
+}
